@@ -8,8 +8,19 @@ jobs:
       with:
         # Disabling shallow clone is recommended for improving relevancy of reporting ?
         fetch-depth: 0
-    - name: SonarCloud Scan
-      uses: sonarsource/sonarcloud-github-action@master
+    - name: Analyze with SonarCloud
+  uses: sonarsource/sonarcloud-github-action@master
+  with:
+    projectBaseDir: my-custom-directory
+    args: >
+      -Dsonar.organization=sachinprivate
+      -Dsonar.projectKey=sachinprivate
+      -Dsonar.python.coverage.reportPaths=coverage.xml
+      -Dsonar.sources=lib/
+      -Dsonar.test.exclusions=tests/**
+      -Dsonar.tests=tests/
+      -Dsonar.verbose=true
+      
       env:
         GITHUB_TOKEN: ${{ secrets.SGITHUB_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

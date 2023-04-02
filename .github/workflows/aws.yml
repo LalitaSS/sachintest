@@ -11,7 +11,7 @@ jobs:
     - name: Analyze with SonarCloud
       uses: sonarsource/sonarcloud-github-action@master
     with:
-        projectBaseDir: sachinprivat/sachintest
+        projectBaseDir: sachinprivate/sachintest
         args: >
          -Dsonar.organization=Sachin_private
          -Dsonar.projectKey=Sachin_private

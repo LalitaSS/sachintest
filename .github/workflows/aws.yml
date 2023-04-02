@@ -1,25 +1,17 @@
 on: [push]
 name: Main Workflow
 jobs:
-sonarcloud:
+  sonarcloud:
+    name: SonarCloud
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-      with:
-        # Disabling shallow clone is recommended for improving relevancy of reporting
-        fetch-depth: 0
-    - name: Analyze with SonarCloud
-      uses: sonarsource/sonarcloud-github-action@master
-    with:
-        projectBaseDir: sachinprivate/sachintest
-        args: >
-         -Dsonar.organization=Sachin_private
-         -Dsonar.projectKey=Sachin_private
-         -Dsonar.python.coverage.reportPaths=coverage.xml
-         -Dsonar.sources=lib/
-         -Dsonar.test.exclusions=tests/**
-          -Dsonar.tests=tests/
-          -Dsonar.verbose=true
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          projectBaseDir: repo1/

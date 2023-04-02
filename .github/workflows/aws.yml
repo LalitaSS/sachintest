@@ -10,8 +10,8 @@ jobs:
         fetch-depth: 0
     - name: Analyze with SonarCloud
       uses: sonarsource/sonarcloud-github-action@master
-      with:
-        projectBaseDir: sachintest/.github/workflows/
+    with:
+        projectBaseDir: sachinprivat/sachintest
         args: >
          -Dsonar.organization=Sachin_private
          -Dsonar.projectKey=Sachin_private
